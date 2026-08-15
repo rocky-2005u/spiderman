@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Spider-Man</title>
 
+
   <style>
+
     * {
       box-sizing: border-box;
     }
+
 
     html,
     body {
       margin: 0;
       padding: 0;
       min-height: 100%;
+
       background: #000;
+
       color: white;
+
       font-family: Arial, sans-serif;
     }
+
 
     body {
       overflow-x: hidden;
     }
 
-    /* =========================
+
+    /* =================================
        BACKGROUND VIDEO
-    ========================== */
+    ================================= */
 
     .background-video {
+
       position: fixed;
+
       top: 0;
       left: 0;
 
@@ -44,12 +57,15 @@
       filter: brightness(1.1);
     }
 
-    /* =========================
+
+    /* =================================
        VIDEO OVERLAY
-    ========================== */
+    ================================= */
 
     .video-overlay {
+
       position: fixed;
+
       top: 0;
       left: 0;
 
@@ -63,17 +79,22 @@
       pointer-events: none;
     }
 
-    /* =========================
+
+    /* =================================
        PASSWORD SCREEN
-    ========================== */
+    ================================= */
 
     .password-screen {
+
       position: fixed;
+
       inset: 0;
 
       display: flex;
-      align-items: center;
+
       justify-content: center;
+
+      align-items: center;
 
       background: rgba(0, 0, 0, 0.85);
 
@@ -82,8 +103,15 @@
       z-index: 9999;
     }
 
+
+    /* =================================
+       PASSWORD BOX
+    ================================= */
+
     .password-box {
+
       width: 90%;
+
       max-width: 380px;
 
       padding: 35px;
@@ -92,32 +120,49 @@
 
       background: rgba(20, 20, 20, 0.95);
 
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
       border-radius: 15px;
 
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.8);
     }
 
+
     .password-box h2 {
+
       margin-top: 0;
+
+      margin-bottom: 10px;
 
       color: #e62429;
 
       font-size: 30px;
     }
 
+
     .password-box p {
+
       color: #ccc;
+
+      margin-bottom: 25px;
     }
 
+
+    /* =================================
+       PASSWORD INPUT
+    ================================= */
+
     .password-box input {
+
       width: 100%;
 
       padding: 14px;
 
-      margin-top: 15px;
       margin-bottom: 15px;
 
       border: none;
+
       outline: none;
 
       border-radius: 8px;
@@ -131,7 +176,20 @@
       text-align: center;
     }
 
+
+    .password-box input:focus {
+
+      box-shadow:
+        0 0 0 2px #e62429;
+    }
+
+
+    /* =================================
+       PASSWORD BUTTON
+    ================================= */
+
     .password-box button {
+
       width: 100%;
 
       padding: 14px;
@@ -149,37 +207,57 @@
       font-weight: bold;
 
       cursor: pointer;
+
+      transition: 0.3s;
     }
+
 
     .password-box button:hover {
+
       background: #ff3b40;
+
+      transform: translateY(-2px);
     }
 
+
+    /* =================================
+       ERROR MESSAGE
+    ================================= */
+
     .error {
+
       display: none;
 
       color: #ff4d4d;
 
-      margin-top: 12px;
-
       font-size: 14px;
+
+      margin-top: 12px;
     }
 
-    /* =========================
-       CONTENT
-    ========================== */
+
+    /* =================================
+       MAIN CONTENT
+    ================================= */
 
     .content {
+
       position: relative;
 
       z-index: 2;
 
-      padding: 30px 20px;
-
       min-height: 100vh;
+
+      padding: 30px 20px;
     }
 
+
+    /* =================================
+       TITLE
+    ================================= */
+
     h1 {
+
       text-align: center;
 
       margin: 0 0 15px;
@@ -188,24 +266,30 @@
 
       font-size: 42px;
 
-      text-shadow: 0 3px 10px #000;
+      text-shadow:
+        0 3px 10px black;
     }
 
+
     .description {
+
       text-align: center;
 
       margin-bottom: 40px;
 
       font-size: 18px;
 
-      text-shadow: 0 2px 5px #000;
+      text-shadow:
+        0 2px 5px black;
     }
 
-    /* =========================
-       GALLERY
-    ========================== */
+
+    /* =================================
+       MOVIE GALLERY
+    ================================= */
 
     .gallery {
+
       display: grid;
 
       grid-template-columns:
@@ -218,8 +302,15 @@
       margin: auto;
     }
 
+
+    /* =================================
+       MOVIE CARD
+    ================================= */
+
     .movie {
-      background: rgba(20, 20, 20, 0.80);
+
+      background:
+        rgba(20, 20, 20, 0.80);
 
       border-radius: 10px;
 
@@ -230,17 +321,28 @@
       box-shadow:
         0 0 15px rgba(0, 0, 0, 0.7);
 
-      transition: 0.3s;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     }
 
+
     .movie:hover {
-      transform: translateY(-8px);
+
+      transform:
+        translateY(-8px);
 
       box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.9);
     }
 
+
+    /* =================================
+       MOVIE POSTER
+    ================================= */
+
     .movie img {
+
       width: 100%;
 
       height: 270px;
@@ -250,7 +352,13 @@
       display: block;
     }
 
+
+    /* =================================
+       MOVIE TITLE
+    ================================= */
+
     .movie h2 {
+
       font-size: 16px;
 
       padding: 10px;
@@ -258,45 +366,60 @@
       margin: 0;
     }
 
+
     .movie a {
+
       color: white;
 
       text-decoration: none;
     }
 
-    /* =========================
+
+    /* =================================
        MOBILE
-    ========================== */
+    ================================= */
 
     @media (max-width: 600px) {
 
       h1 {
+
         font-size: 32px;
       }
 
+
       .gallery {
+
         grid-template-columns:
           repeat(2, 1fr);
 
         gap: 12px;
       }
 
+
       .movie img {
+
         height: 220px;
       }
 
+
       .movie h2 {
+
         font-size: 14px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- =========================
+
+  <!-- =================================
        BACKGROUND VIDEO
-  ========================== -->
+  ================================= -->
 
   <video
     class="background-video"
@@ -306,18 +429,23 @@
     playsinline
     preload="auto"
   >
+
     <source
       src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_003132_8b7edcb6-c64d-4a52-a9ca-879942e122ad.mp4"
       type="video/mp4"
     >
+
   </video>
+
+
+  <!-- VIDEO OVERLAY -->
 
   <div class="video-overlay"></div>
 
 
-  <!-- =========================
-       PASSWORD
-  ========================== -->
+  <!-- =================================
+       PASSWORD POPUP
+  ================================= -->
 
   <div
     class="password-screen"
@@ -326,11 +454,14 @@
 
     <div class="password-box">
 
-      <h2>🕷️ Spider-Man</h2>
+      <h2>
+        🕷️ Spider-Man
+      </h2>
 
       <p>
         Enter the password to access this website
       </p>
+
 
       <input
         type="password"
@@ -339,9 +470,13 @@
         autocomplete="off"
       >
 
-      <button onclick="checkPassword()">
+
+      <button
+        onclick="checkPassword()"
+      >
         Enter Website
       </button>
+
 
       <div
         class="error"
@@ -355,75 +490,143 @@
   </div>
 
 
-  <!-- =========================
-       WEBSITE
-  ========================== -->
+  <!-- =================================
+       WEBSITE CONTENT
+  ================================= -->
 
   <main class="content">
 
-    <h1>Spider-Man</h1>
+
+    <h1>
+      Spider-Man
+    </h1>
+
 
     <p class="description">
       All Spider-Man Movies
     </p>
 
+
+    <!-- =================================
+         MOVIE GALLERY
+    ================================= -->
+
     <div class="gallery">
 
+
+      <!-- Spider-Man 2002 -->
+
       <div class="movie">
+
         <img
           src="https://preview.redd.it/how-old-were-you-when-you-watched-spider-man-2002-for-the-v0-oy51ucbiltoc1.jpeg?width=640&crop=smart&auto=webp&s=9056f8330b78a5afbe91e521de113e7291b06bc9"
           alt="Spider-Man (2002)"
         >
-        <h2>Spider-Man (2002)</h2>
+
+        <h2>
+          Spider-Man (2002)
+        </h2>
+
       </div>
 
+
+      <!-- Spider-Man 2 -->
+
       <div class="movie">
+
         <img
           src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbd3f2b6-d1f2-4d85-9dc9-3eccdaae6d3d/dg8j9q1-f0536e09-5773-49f2-8010-cb9b59b6b210.jpg"
           alt="Spider-Man 2 (2004)"
         >
-        <h2>Spider-Man 2 (2004)</h2>
+
+        <h2>
+          Spider-Man 2 (2004)
+        </h2>
+
       </div>
 
+
+      <!-- Spider-Man 3 -->
+
       <div class="movie">
+
         <img
           src="https://upload.wikimedia.org/wikipedia/en/7/7a/Spider-Man_3%2C_International_Poster.jpg"
           alt="Spider-Man 3 (2007)"
         >
-        <h2>Spider-Man 3 (2007)</h2>
+
+        <h2>
+          Spider-Man 3 (2007)
+        </h2>
+
       </div>
 
+
+      <!-- Amazing Spider-Man -->
+
       <div class="movie">
+
         <img
           src="https://preview.redd.it/the-amazing-spider-man-2012-movie-posters-v0-1zdlffrm4a691.jpg?width=640&crop=smart&auto=webp&s=bf8b687e6b21b94ce0cd5958e8b09bd0574a82fd"
           alt="The Amazing Spider-Man (2012)"
         >
-        <h2>The Amazing Spider-Man (2012)</h2>
+
+        <h2>
+          The Amazing Spider-Man (2012)
+        </h2>
+
       </div>
 
+
+      <!-- Amazing Spider-Man 2 -->
+
       <div class="movie">
+
         <img
           src="https://m.media-amazon.com/images/M/MV5BMmIzMDZiNDAtZTA3NS00ZDUzLWFmZGYtM2ZlZTNjMzdhNDliXkEyXkFqcGc@.jpg"
           alt="The Amazing Spider-Man 2 (2014)"
         >
-        <h2>The Amazing Spider-Man 2 (2014)</h2>
+
+        <h2>
+          The Amazing Spider-Man 2 (2014)
+        </h2>
+
       </div>
 
+
+      <!-- Homecoming -->
+
       <div class="movie">
+
         <img
           src="https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg"
           alt="Spider-Man: Homecoming (2017)"
         >
-        <h2>Spider-Man: Homecoming (2017)</h2>
+
+        <h2>
+          Spider-Man: Homecoming (2017)
+        </h2>
+
       </div>
 
+
+      <!-- Far From Home -->
+
       <div class="movie">
+
         <img
           src="https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg"
           alt="Spider-Man: Far From Home (2019)"
         >
-        <h2>Spider-Man: Far From Home (2019)</h2>
+
+        <h2>
+          Spider-Man: Far From Home (2019)
+        </h2>
+
       </div>
+
+
+      <!-- No Way Home -->
 
       <div class="movie">
 
@@ -446,64 +649,103 @@
 
       </div>
 
+
     </div>
 
   </main>
 
 
-  <!-- =========================
-       PASSWORD SCRIPT
-  ========================== -->
+  <!-- =================================
+       PASSWORD JAVASCRIPT
+  ================================= -->
 
   <script>
 
     const correctPassword = "good";
 
+
     const passwordScreen =
-      document.getElementById("passwordScreen");
+      document.getElementById(
+        "passwordScreen"
+      );
+
 
     const passwordInput =
-      document.getElementById("passwordInput");
+      document.getElementById(
+        "passwordInput"
+      );
+
 
     const errorMessage =
-      document.getElementById("errorMessage");
+      document.getElementById(
+        "errorMessage"
+      );
 
 
-    /* Check saved access */
+    /* =================================
+       CHECK SESSION
+       
+       sessionStorage means:
+       - Refresh = remembered
+       - Close tab = forgotten
+       - Close browser = forgotten
+    ================================= */
 
     if (
-      localStorage.getItem("spidermanAccess")
-      === "true"
+      sessionStorage.getItem(
+        "spidermanAccess"
+      ) === "true"
     ) {
 
-      passwordScreen.style.display = "none";
+      passwordScreen.style.display =
+        "none";
 
     }
 
 
-    /* Check password */
+    /* =================================
+       CHECK PASSWORD
+    ================================= */
 
     function checkPassword() {
 
+      const enteredPassword =
+        passwordInput.value;
+
+
       if (
-        passwordInput.value
-        === correctPassword
+        enteredPassword ===
+        correctPassword
       ) {
 
-        localStorage.setItem(
+        /* Remember only for this tab */
+
+        sessionStorage.setItem(
           "spidermanAccess",
           "true"
         );
 
+
+        /* Hide password popup */
+
         passwordScreen.style.display =
           "none";
 
+
       } else {
+
+        /* Show error */
 
         errorMessage.style.display =
           "block";
 
+
+        /* Clear input */
+
         passwordInput.value = "";
+
+
+        /* Focus input */
 
         passwordInput.focus();
 
@@ -512,7 +754,9 @@
     }
 
 
-    /* Press Enter */
+    /* =================================
+       ENTER KEY
+    ================================= */
 
     passwordInput.addEventListener(
       "keydown",
@@ -529,5 +773,7 @@
 
   </script>
 
+
 </body>
+
 </html>
