@@ -1,114 +1,371 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>copilot</title>
-    </head>
-    <body>
-        <hi>
-        <center><b>spider man</b></center>
-        </hi>
-        <p>copilot is the ai tool by microsoft</p>
-          <style>
+<head>
+  <title>Spider-Man</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
       padding: 0;
-      background-image: <img src="https://ericrobertnolan.com/wp-content/uploads/2014/09/mv5bmjmyotm4mdmxnv5bml5banbnxkftztcwnjiynzexoa-_v1_sx640_sy720_.jpg">
-      background-size: cover; /* Make it cover the whole page */
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: sans-serif;
-      color: white;
-    }
-      <style>
-    body {
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      margin: 0;
-      padding: 20px;
+      color: white;
+      min-height: 100%;
     }
+
+    /* =========================
+       BACKGROUND VIDEO
+    ========================== */
+
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+
+      /* Make video brighter */
+      filter: brightness(1.1);
+    }
+
+    /* =========================
+       VIDEO OVERLAY
+    ========================== */
+
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+
+      /* Lighter overlay */
+      background: rgba(0, 0, 0, 0.20);
+
+      z-index: -1;
+    }
+
+    /* =========================
+       MAIN CONTENT
+    ========================== */
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 30px 20px;
+    }
+
+    /* =========================
+       TITLE
+    ========================== */
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 15px;
       color: #e62429;
+      font-size: 42px;
+      text-shadow: 0 3px 10px black;
     }
+
+    .description {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 18px;
+      text-shadow: 0 2px 5px black;
+    }
+
+    /* =========================
+       MOVIE GALLERY
+    ========================== */
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+      );
+
       gap: 20px;
-      padding: 0 20px;
+
+      max-width: 1200px;
+      margin: auto;
     }
 
+    /* =========================
+       MOVIE CARD
+    ========================== */
+
     .movie {
-      background: #222;
-      border-radius: 8px;
+      background: rgba(20, 20, 20, 0.75);
+
+      border-radius: 10px;
+
       overflow: hidden;
+
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+      box-shadow:
+        0 0 15px rgba(0, 0, 0, 0.7);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     }
+
+    .movie:hover {
+      transform: translateY(-8px);
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    /* =========================
+       MOVIE POSTER
+    ========================== */
 
     .movie img {
       width: 100%;
       height: 270px;
+
       object-fit: cover;
+
+      display: block;
     }
+
+    /* =========================
+       MOVIE TITLE
+    ========================== */
 
     .movie h2 {
       font-size: 16px;
+
       padding: 10px;
+
+      margin: 0;
+    }
+
+    .movie a {
+      color: white;
+
+      text-decoration: none;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 600px) {
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .gallery {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 12px;
+      }
+
+      .movie img {
+        height: 220px;
+      }
+
+      .movie h2 {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <h1>All Spider-Man Movies</h1>
+  <!-- =========================
+       BACKGROUND VIDEO
+  ========================== -->
 
-  <div class="gallery">
-    <div class="movie">
-      <img src="https://preview.redd.it/how-old-were-you-when-you-watched-spider-man-2002-for-the-v0-oy51ucbiltoc1.jpeg?width=640&crop=smart&auto=webp&s=9056f8330b78a5afbe91e521de113e7291b06bc9" alt="Spider-Man (2002)">
-      <h2>Spider-Man (2002)</h2>
+  <video
+    class="background-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260518_003132_8b7edcb6-c64d-4a52-a9ca-879942e122ad.mp4"
+      type="video/mp4"
+    >
+  </video>
+
+
+  <!-- =========================
+       DARK OVERLAY
+  ========================== -->
+
+  <div class="video-overlay"></div>
+
+
+  <!-- =========================
+       WEBSITE CONTENT
+  ========================== -->
+
+  <main class="content">
+
+    <h1>Spider-Man</h1>
+
+    <p class="description">
+      All Spider-Man Movies
+    </p>
+
+
+    <!-- =========================
+         MOVIE GALLERY
+    ========================== -->
+
+    <div class="gallery">
+
+
+      <!-- Spider-Man 2002 -->
+
+      <div class="movie">
+
+        <img
+          src="https://preview.redd.it/how-old-were-you-when-you-watched-spider-man-2002-for-the-v0-oy51ucbiltoc1.jpeg?width=640&crop=smart&auto=webp&s=9056f8330b78a5afbe91e521de113e7291b06bc9"
+          alt="Spider-Man (2002)"
+        >
+
+        <h2>
+          Spider-Man (2002)
+        </h2>
+
+      </div>
+
+
+      <!-- Spider-Man 2 -->
+
+      <div class="movie">
+
+        <img
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbd3f2b6-d1f2-4d85-9dc9-3eccdaae6d3d/dg8j9q1-f0536e09-5773-49f2-8010-cb9b59b6b210.jpg"
+          alt="Spider-Man 2 (2004)"
+        >
+
+        <h2>
+          Spider-Man 2 (2004)
+        </h2>
+
+      </div>
+
+
+      <!-- Spider-Man 3 -->
+
+      <div class="movie">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/7/7a/Spider-Man_3%2C_International_Poster.jpg"
+          alt="Spider-Man 3 (2007)"
+        >
+
+        <h2>
+          Spider-Man 3 (2007)
+        </h2>
+
+      </div>
+
+
+      <!-- Amazing Spider-Man -->
+
+      <div class="movie">
+
+        <img
+          src="https://preview.redd.it/the-amazing-spider-man-2012-movie-posters-v0-1zdlffrm4a691.jpg?width=640&crop=smart&auto=webp&s=bf8b687e6b21b94ce0cd5958e8b09bd0574a82fd"
+          alt="The Amazing Spider-Man (2012)"
+        >
+
+        <h2>
+          The Amazing Spider-Man (2012)
+        </h2>
+
+      </div>
+
+
+      <!-- Amazing Spider-Man 2 -->
+
+      <div class="movie">
+
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BMmIzMDZiNDAtZTA3NS00ZDUzLWFmZGYtM2ZlZTNjMzdhNDliXkEyXkFqcGc@.jpg"
+          alt="The Amazing Spider-Man 2 (2014)"
+        >
+
+        <h2>
+          The Amazing Spider-Man 2 (2014)
+        </h2>
+
+      </div>
+
+
+      <!-- Spider-Man Homecoming -->
+
+      <div class="movie">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg"
+          alt="Spider-Man: Homecoming (2017)"
+        >
+
+        <h2>
+          Spider-Man: Homecoming (2017)
+        </h2>
+
+      </div>
+
+
+      <!-- Spider-Man Far From Home -->
+
+      <div class="movie">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg"
+          alt="Spider-Man: Far From Home (2019)"
+        >
+
+        <h2>
+          Spider-Man: Far From Home (2019)
+        </h2>
+
+      </div>
+
+
+      <!-- Spider-Man No Way Home -->
+
+      <div class="movie">
+
+        <a
+          href="https://www.imdb.com/title/tt10872600/"
+          target="_blank"
+        >
+
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg"
+            alt="Spider-Man: No Way Home (2021)"
+          >
+
+          <h2>
+            Spider-Man: No Way Home (2021)
+          </h2>
+
+        </a>
+
+      </div>
+
+
     </div>
 
-    <div class="movie">
-      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbd3f2b6-d1f2-4d85-9dc9-3eccdaae6d3d/dg8j9q1-f0536e09-5773-49f2-8010-cb9b59b6b210.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RiZDNmMmI2LWQxZjItNGQ4NS05ZGM5LTNlY2NkYWFlNmQzZFwvZGc4ajlxMS1mMDUzNmUwOS01NzczLTQ5ZjItODAxMC1jYjliNTliNmIyMTAuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.vc2OUdyvopLygay3-zfjPTMlSNrZRdqJ0NS_4FoEaZw" alt="Spider-Man 2 (2004)">
-      <h2>Spider-Man 2 (2004)</h2>
-    </div>
+  </main>
 
-    <div class="movie">
-      <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Spider-Man_3%2C_International_Poster.jpg" alt="Spider-Man 3 (2007)">
-      <h2>Spider-Man 3 (2007)</h2>
-    </div>
-
-    <div class="movie">
-      <img src="https://preview.redd.it/the-amazing-spider-man-2012-movie-posters-v0-1zdlffrm4a691.jpg?width=640&crop=smart&auto=webp&s=bf8b687e6b21b94ce0cd5958e8b09bd0574a82fd" alt="The Amazing Spider-Man (2012)">
-      <h2>The Amazing Spider-Man (2012)</h2>
-    </div>
-
-    <div class="movie">
-      <img src="https://m.media-amazon.com/images/M/MV5BMmIzMDZiNDAtZTA3NS00ZDUzLWFmZGYtM2ZlZTNjMzdhNDliXkEyXkFqcGc@.jpg" alt="The Amazing Spider-Man 2 (2014)">
-      <h2>The Amazing Spider-Man 2 (2014)</h2>
-    </div>
-
-    <div class="movie">
-      <img src="https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg" alt="Spider-Man: Homecoming (2017)">
-      <h2>Spider-Man: Homecoming (2017)</h2>
-    </div>
-
-    <div class="movie">
-      <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg" alt="Spider-Man: Far From Home (2019)">
-      <h2>Spider-Man: Far From Home (2019)</h2>
-    </div>
-
-    <div class="movie">
-        <a href="https://www.imdb.com/title/tt10872600/">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg" alt="Spider-Man: No Way Home (2021)">
-      <h2>Spider-Man: No Way Home (2021)</h2>
-    </div>
-
-
-    </div>
-  </div>
-  </style>
-    </body>
+</body>
 </html>
